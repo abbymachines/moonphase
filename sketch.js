@@ -1,28 +1,60 @@
-let r = 96;
-let g = 81;
-let b = 196;
+var phases = [6];
+
 
 function setup() {
-  createCanvas(800,800);
+  createCanvas(600, 600);
+  frameRate(1);
+    for (var i = 0; i <= 6; i++) {
+    phases[i] = loadImage("phasePics/phase" + i + ".jpg");
+  }
 }
 
-function draw() {
-  newColor = color(96, 81, 196);
-  background(255,0,0);
-  shapeGroup(0, 0, 0, 255, 0);
-  shapeGroup(100, 100, r, g, b);
-  shapeGroup(200,200, random(255), random(255), random(255));
-  //ellipse(mouseX, mouseY, 20, 20);
+function draw(){
+  var i = 0;
+      for ( var i = 0; i <= 6; i += 1 ) {
+        //using % to loop back to the first element after the array length
+        image(phases[i % phases.length], 0, 0);
+        print(i);
+
+    }
 }
 
-function shapeGroup(x, y, red, green, blue){
-  fill(red, green, blue);
-  ellipse(x+200, y+200, 200, 200);
-  ellipse(x+400, y+400, 400, 400);
-  rect(x+400, y+400, 100, 100);
-  print("myCoolFunction is running");
-}
 
-function moon(phase);{
+// let timer = 0;
+// let moonphase;
+// let monthInSeconds = 5;
+// let frameRate = 60;
+
+// function setup() {
+//   createCanvas(800,800);
+// }
+
+// function draw() {
+//   background(0);
+
+//   //animate moon over time, simulating a month
+//   timer++;
+//   timer = timer % (monthInSeconds * frameRate); //300 should be 5 seconds if we are 60fps
+//   moonphase = map(timer, 0, monthInSeconds * frameRate, 0, 30);
+//   //print(moonphase);
+//   fill(255);
+//   text("day of the month "+int(moonphase), 100, 100);
+//   moon(moonphase, width/2, height/2, 1);
+
+// //draw 30 different moons
+//   for (var i = 0; i < 30; i++){
+//     moon(i, i*27, 50, 0.1);
+//   }
+
+// }
+
+// function moon(phase, xLoc, yLoc, overallSize){ //phase should be between 0-30
+//   if (phase <= 15){
+//     phase = map(phase, 0, 15, 0, 300);
+//   }
+//   else{
+//     phase = map(phase, 15, 30, 300, 0);
+//   }
   
-}
+//   ellipse(xLoc, yLoc, phase*overallSize, phase*overallSize )
+// }
